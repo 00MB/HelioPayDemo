@@ -13,22 +13,8 @@ const App = () => {
   window.Buffer = window.Buffer || require("buffer").Buffer;
   
   const [paymentId, setPaymentId] = useState<string | null>(
-    '6336b9352d7e2da5e52a8e2f'
+    '63440f375db9656d2b1af48d'
   );
-
-  const getListCurrencies = () => {
-    HelioApiAdapter.listCurrencies()
-      .then((res) => {
-        // console.log(2, res);
-      })
-      .catch((err) => {
-        // console.log(err);
-      });
-  }
-
-  useEffect(() => {
-    getListCurrencies()
-  }, []);
 
   return (
     <>
@@ -38,7 +24,7 @@ const App = () => {
         onChange={(e) => setPaymentId(e.target.value)}
       />
       <HelioPay
-        cluster="mainnet-beta"
+        cluster="devnet"
         theme={{
           colors: {
             primary: '#770d5a',
@@ -57,8 +43,8 @@ const App = () => {
         onStartPayment={function (): void {
           console.log('onStartPayment');
         }}
-        supportedCurrencies={['SOL']}
-        totalAmount={0.01}
+        supportedCurrencies={['USDC']}
+        totalAmount={1}
       />
     </>
   );
